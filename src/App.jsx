@@ -17,6 +17,8 @@ import LoginPage from './pages/user/LoginPage';
 import RegisterPage from './pages/user/RegisterPage';
 import ProfilePage from './pages/user/ProfilePage';
 import OrderHistoryPage from './pages/user/OrderHistoryPage';
+import OrderDetailPage from './pages/user/OrderDetailPage';
+
 
 // Admin Pages
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -91,6 +93,11 @@ function App() {
                   <AdminCategories />
                 </AdminRoute>
               } />
+              <Route path="/order/:id" element={
+  <ProtectedRoute>
+    <OrderDetailPage />
+  </ProtectedRoute>
+} />
 
               {/* 404 */}
               <Route path="*" element={<Navigate to="/" />} />

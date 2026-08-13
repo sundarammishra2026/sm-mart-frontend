@@ -6,8 +6,18 @@ export const categoryService = {
     return response.data;
   },
 
+  getActive: async () => {
+    const response = await api.get('/Category/active');
+    return response.data;
+  },
+
   getById: async (id) => {
     const response = await api.get(`/Category/${id}`);
+    return response.data;
+  },
+
+  getProductsByCategory: async (id) => {
+    const response = await api.get(`/Category/${id}/products`);
     return response.data;
   },
 
@@ -18,6 +28,11 @@ export const categoryService = {
 
   update: async (id, data) => {
     const response = await api.put(`/Category/${id}`, data);
+    return response.data;
+  },
+
+  toggleStatus: async (id, isActive) => {
+    const response = await api.patch(`/Category/${id}/status`, { isActive });
     return response.data;
   },
 
