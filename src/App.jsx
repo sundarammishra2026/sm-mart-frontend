@@ -27,6 +27,10 @@ import TermsPage from './pages/user/TermsPage';
 import ReturnsPage from './pages/user/ReturnsPage';
 import FAQsPage from './pages/user/FAQsPage';
 
+// Payment Pages
+import PaymentSuccessPage from './pages/user/PaymentSuccessPage';
+import PaymentFailedPage from './pages/user/PaymentFailedPage';
+
 // Admin Pages
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProducts from './pages/admin/AdminProducts';
@@ -70,6 +74,10 @@ function App() {
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/returns" element={<ReturnsPage />} />
               <Route path="/faqs" element={<FAQsPage />} />
+
+              {/* Payment Pages */}
+              <Route path="/payment/success" element={<PaymentSuccessPage />} />
+              <Route path="/payment/failed" element={<PaymentFailedPage />} />
 
               {/* Protected Routes */}
               <Route path="/checkout" element={
