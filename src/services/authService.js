@@ -1,13 +1,13 @@
-import api from './api';
+import api from './api';  // ✅ Correct path (./api not ./api.js)
 
 export const authService = {
-  register: async (userData) => {
-    const response = await api.post('/Auth/register', userData);
+  login: async (email, password) => {
+    const response = await api.post('/Auth/login', { email, password });
     return response.data;
   },
 
-  login: async (email, password) => {
-    const response = await api.post('/Auth/login', { email, password });
+  register: async (userData) => {
+    const response = await api.post('/Auth/register', userData);
     return response.data;
   },
 
@@ -16,13 +16,17 @@ export const authService = {
     localStorage.removeItem('user');
   },
 
-  getCurrentUser: () => {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
-  },
-
   getToken: () => {
     return localStorage.getItem('token');
+  },
+
+  getCurrentUser: () => {
+    try {
+      const user = localStorage.getItem('user');
+      return user ? JSON.parse(user) : null;
+    } catch {
+      return null;
+    }
   },
 
   isAuthenticated: () => {
@@ -30,7 +34,13 @@ export const authService = {
   },
 
   isAdmin: () => {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user?.role === 'Admin';
+    try {
+      const user = localStorage.getItem('user');
+      if (!user) return false;
+      const parsed = JSON.parse(user);
+      return parsed?.role === 'Admin';
+    } catch {
+      return false;
+    }
   }
 };

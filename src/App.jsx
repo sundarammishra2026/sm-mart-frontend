@@ -18,13 +18,21 @@ import RegisterPage from './pages/user/RegisterPage';
 import ProfilePage from './pages/user/ProfilePage';
 import OrderHistoryPage from './pages/user/OrderHistoryPage';
 import OrderDetailPage from './pages/user/OrderDetailPage';
+import AboutPage from './pages/user/AboutPage';
+import ContactPage from './pages/user/ContactPage';
 
+// New Pages
+import PrivacyPage from './pages/user/PrivacyPage';
+import TermsPage from './pages/user/TermsPage';
+import ReturnsPage from './pages/user/ReturnsPage';
+import FAQsPage from './pages/user/FAQsPage';
 
 // Admin Pages
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProducts from './pages/admin/AdminProducts';
 import AdminOrders from './pages/admin/AdminOrders';
 import AdminCategories from './pages/admin/AdminCategories';
+import AdminUsers from './pages/admin/AdminUsers';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -54,50 +62,45 @@ function App() {
               <Route path="/cart" element={<CartPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+
+              {/* New Pages */}
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/returns" element={<ReturnsPage />} />
+              <Route path="/faqs" element={<FAQsPage />} />
 
               {/* Protected Routes */}
               <Route path="/checkout" element={
-                <ProtectedRoute>
-                  <CheckoutPage />
-                </ProtectedRoute>
+                <ProtectedRoute><CheckoutPage /></ProtectedRoute>
               } />
               <Route path="/profile" element={
-                <ProtectedRoute>
-                  <ProfilePage />
-                </ProtectedRoute>
+                <ProtectedRoute><ProfilePage /></ProtectedRoute>
               } />
               <Route path="/orders" element={
-                <ProtectedRoute>
-                  <OrderHistoryPage />
-                </ProtectedRoute>
+                <ProtectedRoute><OrderHistoryPage /></ProtectedRoute>
+              } />
+              <Route path="/order/:id" element={
+                <ProtectedRoute><OrderDetailPage /></ProtectedRoute>
               } />
 
               {/* Admin Routes */}
               <Route path="/admin" element={
-                <AdminRoute>
-                  <AdminDashboard />
-                </AdminRoute>
+                <AdminRoute><AdminDashboard /></AdminRoute>
               } />
               <Route path="/admin/products" element={
-                <AdminRoute>
-                  <AdminProducts />
-                </AdminRoute>
+                <AdminRoute><AdminProducts /></AdminRoute>
               } />
               <Route path="/admin/orders" element={
-                <AdminRoute>
-                  <AdminOrders />
-                </AdminRoute>
+                <AdminRoute><AdminOrders /></AdminRoute>
               } />
               <Route path="/admin/categories" element={
-                <AdminRoute>
-                  <AdminCategories />
-                </AdminRoute>
+                <AdminRoute><AdminCategories /></AdminRoute>
               } />
-              <Route path="/order/:id" element={
-  <ProtectedRoute>
-    <OrderDetailPage />
-  </ProtectedRoute>
-} />
+              <Route path="/admin/users" element={
+                <AdminRoute><AdminUsers /></AdminRoute>
+              } />
 
               {/* 404 */}
               <Route path="*" element={<Navigate to="/" />} />

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { authService } from '../../services/authService';
 import toast from 'react-hot-toast';
 
 const ProfilePage = () => {
@@ -32,8 +31,7 @@ const ProfilePage = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      // API call to update profile
-      // await authService.updateProfile(formData);
+      await new Promise(resolve => setTimeout(resolve, 1000));
       toast.success('Profile updated successfully!');
     } catch (error) {
       toast.error('Failed to update profile');
@@ -55,7 +53,7 @@ const ProfilePage = () => {
                 type="text"
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                className="input-field"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
                 required
               />
             </div>
@@ -65,7 +63,7 @@ const ProfilePage = () => {
               <input
                 type="email"
                 value={user?.email || ''}
-                className="input-field bg-gray-100"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100"
                 disabled
               />
             </div>
@@ -76,7 +74,7 @@ const ProfilePage = () => {
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="input-field"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
               />
             </div>
 
@@ -86,7 +84,7 @@ const ProfilePage = () => {
                 type="text"
                 value={formData.pincode}
                 onChange={(e) => setFormData({ ...formData, pincode: e.target.value })}
-                className="input-field"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
               />
             </div>
           </div>
@@ -96,7 +94,7 @@ const ProfilePage = () => {
             <textarea
               value={formData.address}
               onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-              className="input-field"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
               rows="3"
             />
           </div>
@@ -108,7 +106,7 @@ const ProfilePage = () => {
                 type="text"
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                className="input-field"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
               />
             </div>
 
@@ -118,7 +116,7 @@ const ProfilePage = () => {
                 type="text"
                 value={formData.state}
                 onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                className="input-field"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
               />
             </div>
           </div>

@@ -9,7 +9,7 @@ const api = axios.create({
   },
 });
 
-// Request Interceptor
+// Request Interceptor — Add Token
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -21,7 +21,7 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Response Interceptor
+// Response Interceptor — Handle 401
 api.interceptors.response.use(
   (response) => response,
   (error) => {
